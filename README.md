@@ -2,7 +2,7 @@
 ## SDN 009 Tanjung Medan
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/fixxyinhere/digital-arsip-sdn009/main/public/images/icons/icon-192x192.png" alt="SIAD Logo" width="120" style="border-radius: 20px;">
+<!--   <img src="https://raw.githubusercontent.com/fixxyinhere/digital-arsip-sdn009/main/public/images/icons/icon-192x192.png" alt="SIAD Logo" width="120" style="border-radius: 20px;"> -->
   
   <p><em>Digitalisasi Arsip Sekolah untuk Era Modern</em></p>
   
@@ -89,7 +89,7 @@
 ## 📱 **Progressive Web App**
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=PWA+Screenshots" alt="PWA Screenshots" style="border-radius: 10px;">
+<!--   <img src="https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=PWA+Screenshots" alt="PWA Screenshots" style="border-radius: 10px;"> -->
 </div>
 
 ### 🌟 **PWA Features:**
