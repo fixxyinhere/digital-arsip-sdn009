@@ -26,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Digital Arsip SDN 009 Tanjung Medan')
+            ->brandLogo(fn() => view('filament.components.brand')) // ← Custom brand
             ->colors([
                 'primary' => Color::Blue,
             ])
