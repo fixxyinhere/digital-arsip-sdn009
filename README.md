@@ -133,7 +133,7 @@ php artisan serve
 🎉 **Done!** Visit `http://localhost:8000/admin`
 
 **Default Login:**
-- Email: `admin@sdn009.com`
+- Email: `operator@sdn009.sch.id`
 - Password: `password`
 
 ---
@@ -380,7 +380,7 @@ Proyek ini dilisensikan di bawah [MIT License](LICENSE) - lihat file LICENSE unt
 
 **Project Info:**
 - 🏫 **Sekolah**: SDN 009 Tanjung Medan
-- 👨‍💻 **Developer**: [Your Name](https://github.com/fixxyinhere)
+- 👨‍💻 **Developer**: [M. Hafis](https://github.com/fixxyinhere)
 - 🔗 **Repository**: [GitHub](https://github.com/fixxyinhere/digital-arsip-sdn009)
 <!-- - 🌐 **Live Demo**: [Vercel](https://your-app.vercel.app) -->
 
