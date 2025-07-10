@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\DocumentAccessLog;
 use App\Models\Category;
 use App\Models\DocumentType;
+use App\Services\DocumentAccessLogger;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -198,13 +199,13 @@ class DocumentResource extends Resource
                     ->icon('heroicon-m-arrow-down-tray')
                     ->color('info')
                     ->action(function (Document $record) {
-                        DocumentAccessLog::create([
-                            'document_id' => $record->id,
-                            'user_id' => auth()->id(),
-                            'action' => 'download',
-                            'ip_address' => request()->ip(),
-                            'user_agent' => request()->userAgent(),
-                            'accessed_at' => now(),
+                        // Log download menggunakan service
+                        DocumentAccessLogger::logDownload($record->id, [
+                            'document_title' => $record->title,
+                            'document_number' => $record->document_number,
+                            'file_name' => $record->original_name,
+                            'file_size' => $record->file_size,
+                            'download_method' => 'filament_action',
                         ]);
 
                         if (!Storage::exists($record->file_path)) {
@@ -219,9 +220,19 @@ class DocumentResource extends Resource
                     })
                     ->visible(fn() => auth()->user()->can('download_documents')),
 
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->before(function (Document $record) {
+                        // Log view action
+                        DocumentAccessLogger::logView($record->id, [
+                            'document_title' => $record->title,
+                            'document_number' => $record->document_number,
+                            'view_type' => 'filament_view_action',
+                        ]);
+                    }),
+
                 Tables\Actions\EditAction::make()
                     ->visible(fn() => auth()->user()->can('edit_documents')),
+
                 Tables\Actions\DeleteAction::make()
                     ->visible(fn() => auth()->user()->can('delete_documents')),
             ])
@@ -258,7 +269,7 @@ class DocumentResource extends Resource
         return [
             'index' => Pages\ListDocuments::route('/'),
             'create' => Pages\CreateDocument::route('/create'),
-            // 'view' => Pages\ViewDocument::route('/{record}'),
+            'view' => Pages\ViewDocument::route('/{record}'),
             'edit' => Pages\EditDocument::route('/{record}/edit'),
         ];
     }
