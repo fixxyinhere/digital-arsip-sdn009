@@ -87,7 +87,23 @@ class DocumentResource extends Resource
                             ->required()
                             ->directory('documents')
                             ->preserveFilenames()
-                            ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+                            ->acceptedFileTypes([
+                                'application/pdf',
+                                'application/msword',
+                                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                                'image/jpeg',
+                                'image/jpg',
+                                'image/png',
+                                'image/gif',
+                                'image/bmp',
+                                'image/webp',
+                                'image/jpeg',
+                                'image/jpg',
+                                'image/png',
+                                'image/gif',
+                                'image/bmp',
+                                'image/webp',
+                            ])
                             ->maxSize(10240)
                             ->afterStateUpdated(function ($state, Forms\Set $set) {
                                 if ($state) {
